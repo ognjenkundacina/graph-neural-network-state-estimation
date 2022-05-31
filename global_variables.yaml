@@ -1,0 +1,6 @@
+hidden_state_dim: 64
+N: 4
+r_l2: 0.0
+r_l2_2: 0.0
+readout_units: 64
+output_units: 1
