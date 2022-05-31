@@ -3,7 +3,7 @@
 train_dataset: ./data/train
 validation_dataset: ./data/validation
 predict_dataset: ./data/test
-#load_model_path: ./weights.103-0.000
+#load_model_path: ./weights.197-0.000
 output_path: ./
 
 # OPTIMIZATION OPTIONS
@@ -19,7 +19,7 @@ metrics: [MeanAbsoluteError]
 
 # TRAINING OPTIONS
 batch_size: 32
-epochs: 200
+epochs: 500
 epoch_size: 1000
 shuffle_training_set: True
 shuffle_validation_set: False
