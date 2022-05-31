@@ -42,6 +42,8 @@ Measurement data for our training, test, and validation samples are obtained usi
 
 However, it is necessary  to structure the inputs and the outputs of every sample as graphs, using the networkx package. The transformed data can be found in the **data** directory.
 
+As an example, we uploaded the datasets generated with measurement variances of 10<sup>-5</sup>. Due to file size limits, we could not upload the training set with 10000 samples, so the test set MSE is slightly higher than the one reported in subsection A of the paper.
+
 ## Citing
 If you have found this work useful, we would appreciate citations to the following paper:
 
