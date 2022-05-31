@@ -4,7 +4,7 @@ The goal of the state estimation (SE) algorithm is to estimate complex bus volta
 
 More information is provided in [State Estimation in Electric Power Systems Leveraging Graph Neural Networks](https://arxiv.org/abs/2201.04056).
 
-For the implementation of our work, we used the [IGNNITION](https://ignnition.org/) package, along with the [networkx](https://networkx.org/) package to incororate the creation and augmentation logic for training and test graphs.
+For the implementation of our work, we used the [IGNNITION](https://ignnition.org/) package, along with the [networkx](https://networkx.org/) package to implement the creation and augmentation logic for training and test graphs.
 
 *"IGNNITION is the ideal framework for users with no experience in neural network programming (e.g., TensorFlow, PyTorch). With this framework, users can design and run their own Graph Neural Networks (GNN) in a matter of a few hours."*
 
@@ -24,6 +24,11 @@ pip install -r requirements.txt
 ```
 
 ## Run training and inference
+
+## Dataset generation
+Measurement data for our training, test, and validation samples are obtained using the [Measurement Generator](https://mcosovic.github.io/JuliaGrid.jl/stable/man/generator/) functionality of the [JuliaGrid](https://github.com/mcosovic/JuliaGrid.jl) package. The State Estimation problem is then solved for all of the generated samples using the [Linear State Estimation with PMUs](https://mcosovic.github.io/JuliaGrid.jl/stable/man/tbestimate/#linearpmuse), and the solutions are used for the Graph Neural Network training. The generated data can be found in the **data_from_wls_se_solver directory**.
+
+However, it is necessary  to structure the inputs and the outputs of every sample as graphs, using the networkx package. The transformed data can be found in the **data** directory.
 
 ## Citing
 If you have found this work useful, we would appreciate citations to the following paper:
