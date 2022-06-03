@@ -40,7 +40,9 @@ python predict.py
 ## Dataset generation
 Measurement data for our training, test, and validation samples are obtained using the [Measurement Generator](https://mcosovic.github.io/JuliaGrid.jl/stable/man/generator/) functionality of the [JuliaGrid](https://github.com/mcosovic/JuliaGrid.jl) package. The State Estimation problem is then solved for all of the generated samples using the [Linear State Estimation with PMUs](https://mcosovic.github.io/JuliaGrid.jl/stable/man/tbestimate/#linearpmuse), and the solutions are used for the Graph Neural Network training. The generated data can be found in the **data_from_wls_se_solver directory**.
 
-However, it is necessary  to structure the inputs and the outputs of every sample as graphs, using the networkx package. The transformed data can be found in the **data** directory.
+However, it is necessary  to structure the inputs and the outputs of every sample as graphs, using the networkx package. The transformed data can be found in the **data** directory. 
+
+**We cannot share the code that generates the factor graph and the augmented factor graph yet because that part of the algorithm is in the process of being patented.**
 
 As an example, we uploaded the datasets generated with measurement variances of 10<sup>-5</sup>. Due to file size limits, we could not upload the training set with 10000 samples, so the test set MSE is slightly higher than the one reported in subsection A of the paper.
 
