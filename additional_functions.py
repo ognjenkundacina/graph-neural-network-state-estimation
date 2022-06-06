@@ -9,16 +9,13 @@ Taskovi:
 [DONE] 1. Dodati iGraph u variable node inputs. Skloniti labele napona (estimates), da ne bismo slucajno koristili MSE za loss funkciju
 [DONE ]2. Izgenerisi trening i test set sa ovim podacima
 [DONE] 3. Doradi readout funkciju kao sto su ti rekli iz ignnition tima i prekonstrolisi sve ostale funkcije, kao i citav njihov repo 
-
-TRENUTNO:
-- srediti trenutno pucanje tako sto ces nakon poziva csv readera sve vrijednosti odmah konvertovati u float! 
-makar isao element po element
-- testirati da li se numStateVariables dobro izracuna tako sto cemo umjesto
+[DONE] 4a. testirati da li se numStateVariables dobro izracuna tako sto cemo umjesto
 return WRSS_GNN / numStateVariables
 pisati:
 return WRSS_GNN / 60
 i vidjeti da li se slican training loss dobija nakon prv eepohe
-- ukoliko vec ne mozemo printati razne vrijednosti na konzolu (npr vrijednosti vektora..) pokusati ih ispisivati 
+
+4b. - ukoliko vec ne mozemo printati razne vrijednosti na konzolu (npr vrijednosti vektora..) pokusati ih ispisivati 
 u neki fajl, orvoren u okviru WRSSLoss funkcije
 
 5. Vidi da li mozda ucitavanje measurement i variance rows, kao i one_jacobian da se realizuje na pocetku skripte, prije poziva funkcije
@@ -88,9 +85,6 @@ In the additional_functions.py file you may define a custom loss function (e.g.,
 @tf.function()
 def WRSSLoss(y_true, y_pred):
 
-    N = tf.shape(y_pred)[0]
-    #print("Velicina vektora state varijabli: ", tf.get_static_value(N))
-
     iGraphVector = tf.expand_dims(y_pred[:, -1], axis=0)
     voltageVector = tf.expand_dims(y_pred[:, -2], axis=0)
 
@@ -99,18 +93,18 @@ def WRSSLoss(y_true, y_pred):
 
 
     data_dir = os.path.abspath("./data_from_wls_se_solver")
-    path = str(data_dir) + "/Test_Estimate.csv"
+    path = str(data_dir) + "/Training_Estimate.csv"
     with open(path, 'r') as read_obj:
         csv_reader = reader(read_obj)
         estimate_rows = list(csv_reader)
 
 
-    path=str(data_dir) + "/Test_Measurement.csv"
+    path=str(data_dir) + "/Training_Measurement.csv"
     with open(path, 'r') as read_obj:
         csv_reader = reader(read_obj)
         measurement_rows = list(csv_reader)
 
-    path = str(data_dir) + "/Test_Variance.csv"
+    path = str(data_dir) + "/Training_Variance.csv"
     with open(path, 'r') as read_obj:
         csv_reader = reader(read_obj)
         variance_rows = list(csv_reader)
@@ -139,9 +133,12 @@ def WRSSLoss(y_true, y_pred):
 
     numStateVariables = jacobian.shape[1]
 
+    measurement_rows = tf.convert_to_tensor(np.array([[float(x) for x in line] for line in measurement_rows]))
+    estimate_rows = tf.convert_to_tensor(np.array([[float(x) for x in line] for line in estimate_rows]))
+    variance_rows = tf.convert_to_tensor(np.array([[float(x) for x in line] for line in variance_rows]))
 
     #i = 1 # za sada, ovdje je potrebno dobaviti i staviti nekako iGraph
-    i = iGraphVector[0]
+    i = iGraphVector[0, 0]
     i = tf.cast(i, tf.int32)
 
     measurementLabels = tf.gather(measurement_rows, i)
@@ -160,7 +157,7 @@ def WRSSLoss(y_true, y_pred):
     jacobian = tf.cast(jacobian, tf.float64)
     voltageVector = tf.cast(voltageVector, tf.float64)
 
-    measurementFunctionsGNN = tf.matmul(jacobian, tf.transpose(voltageVector))
+    measurementFunctionsGNN = tf.matmul(jacobian, tf.transpose(voltageVector)) #[100,60] [60,1]
     
     WRSS_GNN = 0
     WRSS_GNN = tf.convert_to_tensor(WRSS_GNN)
@@ -175,8 +172,7 @@ def WRSSLoss(y_true, y_pred):
     #for iMeasurement in range(len(measurementLabels)):
         #WRSS_GNN += (measurementLabels[iMeasurement] - measurementFunctionsGNN[iMeasurement])**2 / variances[iMeasurement]
 
-    return WRSS_GNN / numStateVariables
-    #return tf.convert_to_tensor(WRSS_GNN / numStateVariables)
+    return WRSS_GNN / (3000000 * numStateVariables)
 
 
 

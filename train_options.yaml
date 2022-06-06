@@ -4,7 +4,7 @@ train_dataset: ./data/train
 #validation_dataset: ./data/validation
 validation_dataset: ./data/test
 predict_dataset: ./data/test
-#load_model_path: ./weights.237-0.000
+#load_model_path: ./weights.13-1.109
 output_path: ./
 additional_functions_file: ./additional_functions.py
 

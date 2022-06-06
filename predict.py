@@ -5,6 +5,7 @@ import os
 import numpy as np
 from statistics import mean
 import time
+import tensorflow as tf
 
 
 def predict():
@@ -15,10 +16,16 @@ def predict():
     end = time.time()
     print("Time elapsed: ", end - start)
 
-    calculate_test_set_results(predictions)
+    predictions = np.array(predictions)
+    print(predictions[:, :, 0])
+
+    #zbog implementacije smo u labele morali dodati i iGraph, pa zato i njega imamo u predikcijama, a potreno je uzeti samo napone
+    only_voltage_vector = predictions[:, :, 0]
+
+    calculate_test_set_results(only_voltage_vector)
 
     example_id = 0
-    plot_results_for_one_test_example(predictions, example_id)
+    plot_results_for_one_test_example(only_voltage_vector, example_id)
 
 
 def calculate_test_set_results(predictions_whole_test_set):
