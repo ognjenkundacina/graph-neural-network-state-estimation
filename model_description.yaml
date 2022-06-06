@@ -52,11 +52,21 @@ message_passing:
           type: neural_network
           nn_name: updateNN
 
+#readout:
+#- type: neural_network
+#  input: [variableNode]
+#  nn_name: readout_model
+#  output_label: [$voltage]
+
 readout:
 - type: neural_network
   input: [variableNode]
   nn_name: readout_model
-  output_label: [$voltage]
+  output_name: voltage
+- type: concat
+  axis: 1
+  input: [voltage, $iGraph]
+  output_label: [$iGraph] #izgleda da mora nesto da se definise kao output label
 
 neural_networks:
 - nn_name: readout_model

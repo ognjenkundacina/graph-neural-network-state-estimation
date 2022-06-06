@@ -1,26 +1,29 @@
 
 # PATHS
 train_dataset: ./data/train
-validation_dataset: ./data/validation
+#validation_dataset: ./data/validation
+validation_dataset: ./data/test
 predict_dataset: ./data/test
 #load_model_path: ./weights.237-0.000
 output_path: ./
+additional_functions_file: ./additional_functions.py
 
 # OPTIMIZATION OPTIONS
-loss: MeanSquaredError
+loss: WRSSLoss
 optimizer:
   type: Adam
   learning_rate: 0.000403285
   clipnorm: 1.0
   clipvalue: 0.5
-metrics: [MeanAbsoluteError]
+metrics: [WRSSLoss]
 
 
 
 # TRAINING OPTIONS
-batch_size: 32
+batch_size: 1
 epochs: 500
 epoch_size: 1000
+#shuffle_training_set: True
 shuffle_training_set: True
 shuffle_validation_set: False
 val_samples: 100

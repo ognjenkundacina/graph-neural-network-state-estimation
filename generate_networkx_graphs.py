@@ -69,7 +69,7 @@ def generate_dataset(datasetType, data_dir, should_connect_node_to_second_neighb
             print("ERROR: len(estimate_row) != numVariableNodes")
             return
 
-        add_variable_nodes(G, estimate_row, encoded_variable_node_indices, numVariableNodes)
+        add_variable_nodes(G, estimate_row, encoded_variable_node_indices, numVariableNodes, iGraph)
 
         add_factor_nodes(G, covariance_row, measurement_row, numMeasurements, numVariableNodes, variance_row)
 
@@ -133,11 +133,12 @@ def add_graph_edges(G, jacobRowCount, jacobian_rows, numMeasurements, numVariabl
     return jacobRowCount
 
 
-def add_variable_nodes(G, estimate_row, encoded_variable_node_indices, numVariableNodes):
+def add_variable_nodes(G, estimate_row, encoded_variable_node_indices, numVariableNodes, iGraph):
     for iVar in range(numVariableNodes):
         index_encoding = encoded_variable_node_indices[iVar].tolist()
 
-        G.add_node(str(iVar), entity='variableNode', voltage=estimate_row[iVar], index_encoding=index_encoding)
+        #G.add_node(str(iVar), entity='variableNode', voltage=estimate_row[iVar], index_encoding=index_encoding)
+        G.add_node(str(iVar), entity='variableNode', iGraph=iGraph, index_encoding=index_encoding)
         # self loop:
         G.add_edge(str(iVar), str(iVar))
 
