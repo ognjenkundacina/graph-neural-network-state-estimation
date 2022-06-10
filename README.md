@@ -2,7 +2,7 @@
 
 The goal of the state estimation (SE) algorithm is to estimate complex bus voltages as state variables based on the available set of measurements in the power system. Because phasor measurement units (PMUs) are increasingly being used in transmission power systems, there is a need for a fast SE solver that can take advantage of high sampling rates of PMUs. This research proposes training a graph neural network (GNN) to learn the estimates given the PMU voltage and current measurements as inputs, with the intent of obtaining fast and accurate predictions during the evaluation phase. GNN is trained using synthetic datasets, created using [JuliaGrid](https://github.com/mcosovic/JuliaGrid.jl) package by randomly sampling sets of measurements in the power system and labelling them with a solution obtained using a linear WLS SE with PMUs solver.
 
-More information is provided in [State Estimation in Electric Power Systems Leveraging Graph Neural Networks](https://arxiv.org/abs/2201.04056).
+More information is provided in [Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks]([https://arxiv.org/abs/2201.04056](https://arxiv.org/pdf/2206.02731.pdf)).
 
 For the implementation of our work, we used the [IGNNITION](https://ignnition.org/) package, along with the [networkx](https://networkx.org/) package to implement the creation and augmentation logic for training and test graphs.
 
@@ -51,15 +51,20 @@ If you have found this work useful, we would appreciate citations to the followi
 
 **<u>Plain text:</u>**
 
-O. Kundacina, M. Cosovic, and D. Vukobratovic, “State estimation in electric power systems leveraging graph neural networks,” arXiv preprint arXiv:2201.04056, 2022.
+O. Kundacina, M. Cosovic, and D. Vukobratovic, “Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks,” arXiv preprint arXiv:2206.02731, 2022.
 
 **<u>BibTeX:</u>**
 ```
-@misc{kundacina2022state,
-  title={State Estimation in Electric Power Systems Leveraging Graph Neural Networks},
-  author={Kundacina, Ognjen and Cosovic, Mirsad and Vukobratovic, Dejan},
-  journal={arXiv preprint arXiv:2201.04056},
-  year={2022}
+@misc{https://doi.org/10.48550/arxiv.2206.02731,
+  doi = {10.48550/ARXIV.2206.02731}, 
+  url = {https://arxiv.org/abs/2206.02731},
+  author = {Kundacina, Ognjen and Cosovic, Mirsad and Vukobratovic, Dejan},
+  keywords = {Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks},
+  publisher = {arXiv},
+  year = {2022},
+  copyright = {Creative Commons Attribution 4.0 International}
 }
+
 
 ```
