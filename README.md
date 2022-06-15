@@ -51,20 +51,17 @@ If you have found this work useful, we would appreciate citations to the followi
 
 **<u>Plain text:</u>**
 
-O. Kundacina, M. Cosovic, and D. Vukobratovic, “Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks,” arXiv preprint arXiv:2206.02731, 2022.
+O. Kundacina, M. Cosovic, and D. Vukobratovic, “State estimation in electric power systems leveraging graph neural networks,” in International Conference on Probabilistic Methods Applied to Power Systems (PMAPS), 2022.
 
 **<u>BibTeX:</u>**
 ```
-@misc{https://doi.org/10.48550/arxiv.2206.02731,
-  doi = {10.48550/ARXIV.2206.02731}, 
-  url = {https://arxiv.org/abs/2206.02731},
-  author = {Kundacina, Ognjen and Cosovic, Mirsad and Vukobratovic, Dejan},
-  keywords = {Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
-  title = {Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks},
-  publisher = {arXiv},
-  year = {2022},
-  copyright = {Creative Commons Attribution 4.0 International}
-}
+ @INPROCEEDINGS{
+  kundacina2022state,  
+  author={Kundacina, Ognjen and Cosovic, Mirsad and Vukobratovic, Dejan},  
+  booktitle={International Conference on Probabilistic Methods Applied to Power Systems (PMAPS)},   
+  title={State Estimation in Electric Power Systems Leveraging Graph Neural Networks},   
+  year={2022}
+ }
 
 
 ```
