@@ -2,7 +2,7 @@
 
 The goal of the state estimation (SE) algorithm is to estimate complex bus voltages as state variables based on the available set of measurements in the power system. Because phasor measurement units (PMUs) are increasingly being used in transmission power systems, there is a need for a fast SE solver that can take advantage of high sampling rates of PMUs. This research proposes training a graph neural network (GNN) to learn the estimates given the PMU voltage and current measurements as inputs, with the intent of obtaining fast and accurate predictions during the evaluation phase. GNN is trained using synthetic datasets, created using [JuliaGrid](https://github.com/mcosovic/JuliaGrid.jl) package by randomly sampling sets of measurements in the power system and labelling them with a solution obtained using a linear WLS SE with PMUs solver.
 
-More information is provided in [Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks]([https://arxiv.org/abs/2201.04056](https://arxiv.org/pdf/2206.02731.pdf)).
+More information is provided in [Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks](https://arxiv.org/pdf/2206.02731.pdf).
 
 For the implementation of our work, we used the [IGNNITION](https://ignnition.org/) package, along with the [networkx](https://networkx.org/) package to implement the creation and augmentation logic for training and test graphs.
 
