@@ -51,21 +51,24 @@ The data, transformed into the JSON format, can be found in the **data** directo
 As an example, we uploaded the datasets generated with measurement variances of 10<sup>-5</sup>. Due to file size limits, we could not upload the training set with 10000 samples, so the test set MSE is slightly higher than the one reported in subsection A of the paper.
 
 ## Citing
-If you have found this work useful, we would appreciate citations to the following paper:
+If you have found this work useful, we would appreciate citations to the [following paper](https://ieeexplore.ieee.org/document/9810559):
 
 **<u>Plain text:</u>**
 
-O. Kundacina, M. Cosovic, and D. Vukobratovic, “State estimation in electric power systems leveraging graph neural networks,” in International Conference on Probabilistic Methods Applied to Power Systems (PMAPS), 2022.
+O. Kundacina, M. Cosovic and D. Vukobratovic, "State Estimation in Electric Power Systems Leveraging Graph Neural Networks," 2022 17th International Conference on Probabilistic Methods Applied to Power Systems (PMAPS), 2022, pp. 1-6, doi: 10.1109/PMAPS53380.2022.9810559.
 
 **<u>BibTeX:</u>**
 ```
- @INPROCEEDINGS{
-  kundacina2022state,  
-  author={Kundacina, Ognjen and Cosovic, Mirsad and Vukobratovic, Dejan},  
-  booktitle={International Conference on Probabilistic Methods Applied to Power Systems (PMAPS)},   
-  title={State Estimation in Electric Power Systems Leveraging Graph Neural Networks},   
-  year={2022}
- }
-
+@INPROCEEDINGS{
+    9810559,  
+    author={Kundacina, Ognjen and Cosovic, Mirsad and Vukobratovic, Dejan},  
+    booktitle={2022 17th International Conference on Probabilistic Methods Applied to Power Systems (PMAPS)},   
+    title={State Estimation in Electric Power Systems Leveraging Graph Neural Networks},   
+    year={2022},  
+    volume={},  
+    number={},  
+    pages={1-6},  
+    doi={10.1109/PMAPS53380.2022.9810559}
+}
 
 ```
