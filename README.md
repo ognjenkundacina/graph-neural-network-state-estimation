@@ -4,6 +4,9 @@ The goal of the state estimation (SE) algorithm is to estimate complex bus volta
 
 More information is provided in [Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks](https://arxiv.org/pdf/2206.02731.pdf).
 
+This code can easily be adapted to the nonlinear state estimation problem considering both PMU and legacy (SCADA) measurements. For more details, please visit [Distributed Nonlinear State Estimation in Electric Power Systems using Graph Neural Networks](https://arxiv.org/pdf/2207.11465.pdf).
+
+
 For the implementation of our work, we used the [IGNNITION](https://ignnition.org/) package, along with the [networkx](https://networkx.org/) package to implement the creation and augmentation logic for training and test graphs.
 
 *"IGNNITION is the ideal framework for users with no experience in neural network programming (e.g., TensorFlow, PyTorch). With this framework, users can design and run their own Graph Neural Networks (GNN) in a matter of a few hours."*
@@ -69,6 +72,29 @@ O. Kundacina, M. Cosovic and D. Vukobratovic, "State Estimation in Electric Powe
     number={},  
     pages={1-6},  
     doi={10.1109/PMAPS53380.2022.9810559}
+}
+
+```
+
+
+... or to our nonlinear state estimation paper:
+
+
+**<u>Plain text:</u>**
+
+O. Kundacina, M. Cosovic, D. Miskovic and D. Vukobratovic, "Distributed Nonlinear State Estimation in Electric Power Systems using Graph Neural Networks," 2022 IEEE International Conference on Smart Grid Communications (SmartGridComm), 2022, pp. 1-6.
+
+**<u>BibTeX:</u>**
+```
+@INPROCEEDINGS{
+    9810559,  
+    author={Kundacina, Ognjen and Cosovic, Mirsad and Miskovic, Dragisa and Vukobratovic, Dejan},  
+    booktitle={2022 IEEE International Conference on Smart Grid Communications (SmartGridComm)},   
+    title={Distributed Nonlinear State Estimation in Electric Power Systems using Graph Neural Networks},   
+    year={2022},  
+    volume={},  
+    number={},  
+    pages={1-6}
 }
 
 ```
