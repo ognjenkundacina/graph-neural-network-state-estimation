@@ -2,7 +2,7 @@
 
 The goal of the state estimation (SE) algorithm is to estimate complex bus voltages as state variables based on the available set of measurements in the power system. Because phasor measurement units (PMUs) are increasingly being used in transmission power systems, there is a need for a fast SE solver that can take advantage of high sampling rates of PMUs. This research proposes training a graph neural network (GNN) to learn the estimates given the PMU voltage and current measurements as inputs, with the intent of obtaining fast and accurate predictions during the evaluation phase. GNN is trained using synthetic datasets, created using [JuliaGrid](https://github.com/mcosovic/JuliaGrid.jl) package by randomly sampling sets of measurements in the power system and labelling them with a solution obtained using a linear WLS SE with PMUs solver.
 
-More information is provided in [Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks](https://arxiv.org/pdf/2206.02731.pdf).
+<!--More information is provided in [Robust and Fast Data-Driven Power System State Estimator Using Graph Neural Networks](https://arxiv.org/pdf/2206.02731.pdf).-->
 
 This code can easily be adapted to the nonlinear state estimation problem considering both PMU and legacy (SCADA) measurements. For more details, please visit [Distributed Nonlinear State Estimation in Electric Power Systems using Graph Neural Networks](https://arxiv.org/pdf/2207.11465.pdf).
 
@@ -12,22 +12,86 @@ For the implementation of our work, we used the [IGNNITION](https://ignnition.or
 *"IGNNITION is the ideal framework for users with no experience in neural network programming (e.g., TensorFlow, PyTorch). With this framework, users can design and run their own Graph Neural Networks (GNN) in a matter of a few hours."*
 
 ## Installation
-To install the necessary packages, we recommend using the [conda](https://conda.io) package manager, along with Python 3.8. First install 
-[miniconda](https://docs.conda.io/en/latest/miniconda.html). Then open the Anaconda Prompt (Windows), or Terminal (Linux) and then run the following:
+To install the required packages, we suggest using the popular package manager [conda](https://conda.io) package manager, in conjunction with Python 3.8. If you have not installed conda, we recommend downloading and installing 
+[miniconda](https://docs.conda.io/en/latest/miniconda.html). 
+
+
+After successfully installing miniconda, to open the Anaconda Prompt in Windows, you can follow these steps:
+
+1. Press the "Windows" key on your keyboard or click on the Windows logo in the bottom left corner of your screen.
+2. Type "Anaconda Prompt" in the search bar.
+3. Click on the "Anaconda Prompt" app that appears in the search results.
+
+Alternatively, you can navigate to the "Anaconda3" folder in your Windows start menu and click on "Anaconda Prompt" from there.
+
+For Linux users, open your terminal emulator of choice (such as gnome-terminal or xterm) to access the terminal.
+
+After opening the Anaconda Prompt (Windows), or Terminal (Linux), run the following:
 
 ```
 conda create -n ignnition_environment python=3.8
 conda activate ignnition_environment
 ```
 
-This will create the conda environment with `ignnition_environment` name and will activate it. Navigate to the directory containing the code downloaded from this repository, and install the necessary packages with the following command using *PyPI*:
+This will create the conda environment with `ignnition_environment` name and will activate it. To install the required python libraries in the ignnition environment, please follow the steps listed below.
+
+To download the repository from GitHub to your computer, follow these steps:
+
+1. Click the green "Code" button located on the right side of the screen of the GitHub page of this repository.
+2. Click "Download ZIP" to download the repository as a ZIP file.
+3. Save the ZIP file to a directory on your computer, and extract the contents of the ZIP file to that same directory.
+
+Once you have extracted the contents of the ZIP file, open the Anaconda Prompt on your computer and navigate to the directory where the code is located. For example, if the code is saved in a directory called "graph-neural-network-state-estimation" on your desktop, you can navigate to it by entering the following command into the Anaconda Prompt:
+
+```
+cd C:\Users\<your_username>\Desktop\graph-neural-network-state-estimation
+```
+
+After navigating to the directory, you can install the necessary packages using *PyPI* by entering the following command into the Anaconda Prompt:
 
 ```
 pip install -r requirements.txt
 ```
 
+This will install all the required packages specified in the "requirements.txt" file. Once the installation is complete, you can proceed to run the code by following the instructions provided in the documentation.
+
 ## Run training and inference
-Various training options can be set in train_options.yaml. The training process can be started by running:
+Various training options can be set in train_options.yaml:
+
+- train_dataset: The path to the training dataset.
+
+- validation_dataset: The path to the validation dataset.
+
+- predict_dataset: The path to the testing dataset used for prediction.
+
+- load_model_path: The path to the model weights to be loaded before training. This option can be used to resume training from a previous checkpoint.
+
+- loss: The loss function used during training. It is set to "MeanSquaredError" by default.
+
+- optimizer: The optimization algorithm used during training. It is set to "Adam" by default with a learning rate of 0.0004. The "clipnorm" and "clipvalue" options are used for gradient clipping.
+
+- metrics: The evaluation metric(s) used during training. It is set to "MeanAbsoluteError" by default.
+
+- batch_size: The batch size used during training. It is set to 32 by default.
+
+- epochs: The maximum number of training epochs.
+
+- epoch_size: The number of samples per epoch. If this option is not set, the entire training dataset will be used per epoch.
+
+- shuffle_training_set: If set to "True", the training dataset will be shuffled before each epoch.
+
+- shuffle_validation_set: If set to "True", the validation dataset will be shuffled before each epoch.
+
+- val_samples: The number of samples used during validation. It is set to 100 by default.
+
+- val_frequency: The frequency at which the validation is performed. It is set to 1, which means validation is performed after each epoch.
+
+- execute_gpu: If set to "True", the code will be executed on a GPU.
+
+- batch_norm: The type of batch normalization used during training. It is set to "mean" by default.
+
+
+The training process can be started by running the following command in Anaconda Prompt:
 ```
 python train.py
 ```
