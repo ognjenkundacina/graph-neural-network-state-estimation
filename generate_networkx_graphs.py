@@ -136,8 +136,7 @@ def add_graph_edges(G, jacobRowCount, jacobian_rows, numMeasurements, numVariabl
 def add_variable_nodes(G, estimate_row, encoded_variable_node_indices, numVariableNodes, iGraph):
     for iVar in range(numVariableNodes):
         index_encoding = encoded_variable_node_indices[iVar].tolist()
-        #G.add_node(str(iVar), entity='variableNode', voltage=estimate_row[iVar], index_encoding=index_encoding)
-        G.add_node(str(iVar), entity='variableNode', iGraph=iGraph, index_encoding=index_encoding)
+        G.add_node(str(iVar), entity='variableNode', voltage=estimate_row[iVar], index_encoding=index_encoding)
         # self loop:
         G.add_edge(str(iVar), str(iVar))
 
